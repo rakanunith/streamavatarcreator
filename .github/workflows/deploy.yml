@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]   # or your default branch
+    branches: [ main ]   # change if default branch is different
   workflow_dispatch:
 
 permissions:
@@ -26,8 +26,9 @@ jobs:
         with:
           node-version: 20
 
+      # Use npm install (works without a package-lock.json)
       - name: Install
-        run: npm ci || npm install
+        run: npm install
 
       - name: Build
         run: npm run build
